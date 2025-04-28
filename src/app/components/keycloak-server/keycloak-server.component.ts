@@ -59,8 +59,6 @@ export class KeycloakServerComponent {
           ? keycloakObject['allowed-origins']
           : [];
 
-        console.log('Keycloak Server Info:', this.keycloakServer);
-
         // Token Expiration Countdown
         if (this.keycloakServer.exp && this.keycloakServer.iat) {
           const totalDuration = this.keycloakServer.exp - this.keycloakServer.iat;
