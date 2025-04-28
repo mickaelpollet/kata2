@@ -2,34 +2,35 @@ import { Component, effect, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // Specific modules
-import Keycloak from 'keycloak-js';
 import { ToastrService } from 'ngx-toastr';
-
-import {
-  KEYCLOAK_EVENT_SIGNAL,
-  KeycloakEventType,
-  typeEventArgs,
-  ReadyArgs
-} from 'keycloak-angular';
+import { TimestampToDatePipe } from '../../pipes/timestamp-to-date.pipe';
+import Keycloak from 'keycloak-js';
+import { KEYCLOAK_EVENT_SIGNAL, KeycloakEventType, typeEventArgs, ReadyArgs } from 'keycloak-angular';
 
 @Component({
   selector: 'app-keycloak-server',
   standalone: true,
   imports: [
-    CommonModule
+    CommonModule,
+    TimestampToDatePipe
   ],
   templateUrl: './keycloak-server.component.html',
   styleUrl: './keycloak-server.component.scss'
 })
 export class KeycloakServerComponent {
-  authenticated = false;
+  
   private readonly keycloak = inject(Keycloak);
   private readonly keycloakSignal = inject(KEYCLOAK_EVENT_SIGNAL);
+  authenticated = false;
+  remainingTime = 0;
+  private countdownInterval?: ReturnType<typeof setInterval>;
+  warningThresholdInSeconds = 120;
+  hasWarned = false;
 
   keycloakServer = {
     scope: '',
-    exp: '',
-    iat: '',
+    exp: 0,
+    iat: 0,
     iss: '',
     azp: '',
     sid: '',
@@ -39,15 +40,17 @@ export class KeycloakServerComponent {
 
   constructor(private toastr: ToastrService) {
     effect(() => {
+
       const keycloakEvent = this.keycloakSignal();
 
       if (keycloakEvent.type === KeycloakEventType.Ready) {
+        
         const keycloakObject = this.keycloak.tokenParsed as any;
         this.authenticated = typeEventArgs<ReadyArgs>(keycloakEvent.args);
 
         this.keycloakServer.scope = keycloakObject?.['scope'] ?? '';
-        this.keycloakServer.exp = keycloakObject?.['exp']?.toString() ?? '';
-        this.keycloakServer.iat = keycloakObject?.['iat']?.toString() ?? '';
+        this.keycloakServer.exp = keycloakObject?.['exp'] ?? 0;
+        this.keycloakServer.iat = keycloakObject?.['iat'] ?? 0;
         this.keycloakServer.iss = keycloakObject?.['iss'] ?? '';
         this.keycloakServer.azp = keycloakObject?.['azp'] ?? '';
         this.keycloakServer.sid = keycloakObject?.['sid'] ?? '';
@@ -57,6 +60,19 @@ export class KeycloakServerComponent {
           : [];
 
         console.log('Keycloak Server Info:', this.keycloakServer);
+
+        // Token Expiration Countdown
+        if (this.keycloakServer.exp && this.keycloakServer.iat) {
+          const totalDuration = this.keycloakServer.exp - this.keycloakServer.iat;
+          if (totalDuration / 3 >= this.warningThresholdInSeconds) {
+              this.warningThresholdInSeconds = totalDuration / 3;
+          }
+          const elapsedSinceIat = Math.floor(Date.now() / 1000) - this.keycloakServer.iat;
+          this.remainingTime = totalDuration - elapsedSinceIat;
+          this.startCountdown();
+        }
+
+        this.authenticated = true;
       }
 
       if (keycloakEvent.type === KeycloakEventType.AuthLogout) {
@@ -65,7 +81,6 @@ export class KeycloakServerComponent {
     });
   }
 
-  // Fonction moderne pour copier une valeur dans le presse-papier
   copyToClipboard(value: any): void {
     if (navigator.clipboard) {
       navigator.clipboard.writeText(value.toString()).then(() => {
@@ -83,5 +98,43 @@ export class KeycloakServerComponent {
       document.body.removeChild(textarea);
       this.toastr.success('Copied to clipboard!', 'Success');
     }
+  }
+
+  startCountdown(): void {
+    if (this.countdownInterval) {
+      clearInterval(this.countdownInterval);
+    }
+  
+    this.countdownInterval = setInterval(() => {
+      if (this.remainingTime > 0) {
+        this.remainingTime--;
+  
+        if (this.remainingTime <= this.warningThresholdInSeconds && !this.hasWarned) {
+          this.hasWarned = true;
+          this.toastr.warning('Your session will expire soon!', 'Warning');
+        }
+  
+      } else {
+        clearInterval(this.countdownInterval);
+      }
+    }, 1000);
+  }
+
+
+  getBadgeClass(): string {
+    if (this.remainingTime > this.warningThresholdInSeconds) {
+      return 'badge-success'; // Vert
+    } else if (this.remainingTime > 60) {
+      return 'badge-warning'; // Orange
+    } else {
+      return 'badge-danger'; // Rouge
+    }
+  }
+
+  formatRemainingTime(seconds: number): string {
+    const hrs = Math.floor(seconds / 3600);
+    const mins = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+    return `${hrs}h ${mins}m ${secs}s`;
   }
 }

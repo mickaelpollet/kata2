@@ -67,7 +67,7 @@
 }
 
 .badge {
-    background-color: #007bff; /* joli bleu */
+    background-color: #007bff;
     color: white;
     border-radius: 12px;
     white-space: nowrap;
@@ -76,12 +76,22 @@
 }
 
 .badge-realm-role {
-    background-color: #620faa; /* joli bleu */
+    background-color: #620faa;
     color: white;
 }
 
 .badge-groups {
-    background-color: #cbb736; /* joli bleu */
+    background-color: #cbb736;
+    color: white;
+}
+
+.badge-client-name {
+    background-color: #0e3970;
+    color: white;
+}
+
+.badge-client-role {
+    background-color: #427fce;
     color: white;
 }
 

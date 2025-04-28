@@ -1,8 +1,10 @@
 import { Component, effect, inject } from '@angular/core';
-import Keycloak from 'keycloak-js';
-import { ToastrService } from 'ngx-toastr';
-import { KEYCLOAK_EVENT_SIGNAL, KeycloakEventType, typeEventArgs, ReadyArgs } from 'keycloak-angular';
 import { CommonModule } from '@angular/common';
+
+// Specific modules
+import { ToastrService } from 'ngx-toastr';
+import Keycloak from 'keycloak-js';
+import { KEYCLOAK_EVENT_SIGNAL, KeycloakEventType, typeEventArgs, ReadyArgs } from 'keycloak-angular';
 
 @Component({
   selector: 'app-user',
@@ -76,16 +78,25 @@ export class UserComponent {
   }
 
   copyToClipboard(value: any): void {
-    if (value !== null && value !== undefined) {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(value.toString()).then(() => {
+        this.toastr.success('Copied to clipboard !', 'Success');
+      }).catch(err => {
+        console.error('Clipboard copy failed', err);
+        this.toastr.error('Failed to copy! ', 'Error');
+      });
+    } else {
       const textarea = document.createElement('textarea');
-      textarea.value = String(value);
+      textarea.value = value.toString();
       document.body.appendChild(textarea);
       textarea.select();
       document.execCommand('copy');
       document.body.removeChild(textarea);
-      this.toastr.success('Copied to clipboard!', 'Success');
-    } else {
-      this.toastr.error('Nothing to copy!', 'Error');
+      this.toastr.success('Copied to clipboard ! ', 'Success');
     }
+  }
+
+  getObjectKeys(obj: object | undefined): string[] {
+    return obj ? Object.keys(obj) : [];
   }
 }

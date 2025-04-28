@@ -23,6 +23,8 @@
         </tr>
     </table>
 
+    <hr>
+
     <table class="user-table">
         <tr>
             <td class="table-column-title"><strong>Full Name:</strong></td>
@@ -52,6 +54,8 @@
             </td>
         </tr>
     </table>
+
+    <hr>
     
     <table class="user-table">
         <tr>
@@ -76,6 +80,8 @@
         </tr>
 
     </table>
+
+    <hr>
 
     <table class="user-table">
         <tr>
@@ -117,25 +123,37 @@
                 </button>
             </td>
         </tr>
-        <!-- <tr>
+        <tr>
             <td class="table-column-title"><strong>Client Roles:</strong></td>
             <td class="table-column-content">
-              <div *ngIf="currentUser.clientRoles && (Object.keys(currentUser.clientRoles).length > 0); else noClientRoles">
-                <div *ngFor="let clientName of Object.keys(currentUser.clientRoles)">
-                  <strong>{{ clientName }}:</strong>
-                  <ul>
-                    <li *ngFor="let role of currentUser.clientRoles[clientName]">
-                      {{ role }}
-                    </li>
-                  </ul>
+                <div *ngIf="currentUser.clientRoles && (getObjectKeys(currentUser.clientRoles).length > 0); else noClientRoles">
+                    <div *ngFor="let clientName of getObjectKeys(currentUser.clientRoles)">
+                        <div class="badges-container">
+                            <span class="badge badge-client-name"
+                            (click)="copyToClipboard(clientName)">
+                                {{ clientName }}
+                            </span>
+                        </div>
+                    
+                        <div class="badges-container">
+                            <span *ngFor="let clientRole of currentUser.clientRoles[clientName]"
+                                class="badge badge-client-role"
+                                (click)="copyToClipboard(clientRole)">
+                                {{ clientRole }}
+                            </span>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <ng-template #noClientRoles>
-                <span class="text-muted">No client roles assigned</span>
-              </ng-template>
+                <ng-template #noClientRoles>
+                    <span class="text-muted">No client roles assigned</span>
+                </ng-template>
             </td>
-            <td class="table-column-button"></td>
-          </tr> -->
+            <td class="table-column-button">
+                <!-- <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(currentUser.clientRoles)">
+                    <i class="bi bi-clipboard"></i>
+                </button> -->
+            </td>
+        </tr>
     </table>
 
 </div>

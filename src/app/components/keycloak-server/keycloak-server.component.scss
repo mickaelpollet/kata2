@@ -1,1 +1,26 @@
 @import '../shared/user-card.shared.scss';
+
+.badge {
+    font-size: 1rem;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+}
+
+.badge-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.badge-warning {
+    background-color: #ffc107;
+    color: black;
+}
+
+.badge-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.table-column-token {
+    text-align: center;
+}
