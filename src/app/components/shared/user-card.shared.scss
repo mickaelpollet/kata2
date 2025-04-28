@@ -1,0 +1,110 @@
+.user-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.user-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #333;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+.user-table td {
+    padding: 0.8rem;
+    vertical-align: middle;
+    word-break: break-word;
+}
+
+.table-column-title {
+    font-weight: bold;
+    width: 30%;
+    color: #555;
+}
+
+.table-column-content {
+    width: 55%;
+    font-size: 1rem;
+}
+
+.table-column-button {
+    width: 15%;
+    text-align: center;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+    border-radius: 6px;
+}
+
+.badge.text-bg-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.badge.text-bg-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+    .badges-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 5px;
+}
+
+.badge {
+    background-color: #007bff; /* joli bleu */
+    color: white;
+    border-radius: 12px;
+    white-space: nowrap;
+    font-size: 0.9rem;
+    padding: 0.4em 0.8em;
+}
+
+.badge-realm-role {
+    background-color: #620faa; /* joli bleu */
+    color: white;
+}
+
+.badge-groups {
+    background-color: #cbb736; /* joli bleu */
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .user-card {
+        padding: 1rem;
+    }
+
+    .user-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .table-column-title,
+    .table-column-content,
+    .table-column-button {
+        width: 100%;
+        text-align: left;
+        margin-bottom: 0.5rem;
+    }
+
+    .table-column-button {
+        text-align: right;
+    }
+}

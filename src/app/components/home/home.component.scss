@@ -1,0 +1,40 @@
+.container-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1.5rem;
+}
+
+.content-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .grid-item {
+    flex: 1 1 30%;
+    min-width: 300px; /* important pour éviter que ça soit trop écrasé */
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  /* Gestion de l'ordre sur mobile */
+  @media (max-width: 768px) {
+    .content-grid {
+      flex-direction: column;
+    }
+  
+    .user {
+      order: 1;
+    }
+  
+    .tokens {
+      order: 2;
+    }
+  
+    .keycloak-server {
+      order: 3;
+    }
+  }

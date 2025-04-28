@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/* JSON Colorize */
+.url {
+    color: #ff5722;
+}
+
+.email {
+    color: #00bcd4;
+}
+
+.uid {
+    color: #d19a66;
+}
+
+.key {
+    color: #569cd6;
+}
+
+.string {
+    color: #6a9955;
+}
+
+.number {
+    color: #b5cea8;
+}
+
+.boolean {
+    color: #d19a66;
+}
+
+.null {
+    color: #c586c0;
+}

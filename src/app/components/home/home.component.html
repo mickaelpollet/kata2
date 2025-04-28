@@ -1,0 +1,23 @@
+<h1>Welcome on KATA 2 : Keycloak Angular Testing App</h1>
+
+@if (!authenticated) {
+  <h2>You are not authenticated</h2>
+} @else {
+  <h2>You are authenticated</h2>
+
+  <div class="content-grid">
+
+    <div class="grid-item user">
+      <app-user></app-user>
+    </div>
+    
+    <div class="grid-item keycloak-server">
+      <app-keycloak-server></app-keycloak-server>
+    </div>
+
+    <div class="grid-item tokens">
+      <app-tokens></app-tokens>
+    </div>
+
+  </div>
+}

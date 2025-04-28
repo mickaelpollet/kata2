@@ -1,0 +1,18 @@
+@if (authenticated) {
+
+    <div class="json-card">
+        <h2>Access Token</h2>
+        <pre [innerHTML]="keycloakTokens.tokenParsed | prettyJson"></pre>
+    </div>
+    
+    <div class="json-card">
+        <h2>ID Token</h2>
+        <pre [innerHTML]="keycloakTokens.idTokenParsed | prettyJson"></pre>
+    </div>
+    
+    <div class="json-card">
+        <h2>Refresh Token</h2>
+        <pre [innerHTML]="keycloakTokens.refreshTokenParsed | prettyJson"></pre>
+    </div>
+
+}

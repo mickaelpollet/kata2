@@ -1,0 +1,93 @@
+<div class="user-card">
+    <h2>Keycloak Server Informations</h2>
+
+    <table class="user-table">
+        <tr>
+            <td class="table-column-title"><strong>Issuer :</strong></td>
+            <td class="table-column-content">{{ this.keycloakServer.iss }}</td>
+            <td class="table-column-button">
+                <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(keycloakServer.iss)">
+                <i class="bi bi-clipboard"></i>
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td class="table-column-title"><strong>Client :</strong></td>
+            <td class="table-column-content">{{ this.keycloakServer.azp }}</td>
+            <td class="table-column-button">
+                <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(keycloakServer.azp)">
+                <i class="bi bi-clipboard"></i>
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td class="table-column-title"><strong>Scope:</strong></td>
+            <td class="table-column-content">{{ keycloakServer.scope }}</td>
+            <td class="table-column-button">
+            <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(keycloakServer.scope)">
+                <i class="bi bi-clipboard"></i>
+            </button>
+            </td>
+        </tr>
+    </table>
+
+    <table class="user-table">
+        <tr>
+            <td class="table-column-title"><strong>Expiration Time:</strong></td>
+            <td class="table-column-content">{{ this.keycloakServer.exp }}</td>
+            <td class="table-column-button">
+                <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(keycloakServer.exp)">
+                <i class="bi bi-clipboard"></i>
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td class="table-column-title"><strong>Forged Time:</strong></td>
+            <td class="table-column-content">{{ this.keycloakServer.iat }}</td>
+            <td class="table-column-button">
+                <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(keycloakServer.iat)">
+                <i class="bi bi-clipboard"></i>
+                </button>
+            </td>
+        </tr>
+    </table>
+
+    <table class="user-table">
+        <tr>
+            <td class="table-column-title"><strong>sid:</strong></td>
+            <td class="table-column-content">{{ this.keycloakServer.sid }}</td>
+            <td class="table-column-button">
+                <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(keycloakServer.sid)">
+                <i class="bi bi-clipboard"></i>
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td class="table-column-title"><strong>Access Context Class Reference (acr) :</strong></td>
+            <td class="table-column-content">{{ this.keycloakServer.acr }}</td>
+            <td class="table-column-button">
+                <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(keycloakServer.acr)">
+                <i class="bi bi-clipboard"></i>
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td class="table-column-title"><strong>Allowed Origins :</strong></td>
+            <td class="table-column-content">
+                <div class="badges-container">
+                <span 
+                    *ngFor="let currentOrigin of keycloakServer.allowedOrigins"
+                    class="badge"
+                    (click)="copyToClipboard(currentOrigin)">
+                    {{ currentOrigin }}
+                </span>
+                </div>
+            </td>
+            <td class="table-column-button">
+                <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(keycloakServer.allowedOrigins)">
+                <i class="bi bi-clipboard"></i>
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>
