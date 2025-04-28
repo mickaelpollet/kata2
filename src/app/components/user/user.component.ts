@@ -21,6 +21,13 @@ export class UserComponent {
   private readonly keycloak = inject(Keycloak);
   private readonly keycloakSignal = inject(KEYCLOAK_EVENT_SIGNAL);
 
+  standardKeys = [
+    'exp', 'iat', 'auth_time', 'jti', 'iss', 'aud', 'sub', 'typ', 'azp', 'sid', 'acr',
+    'allowed-origins', 'realm_access', 'resource_access', 'scope',
+    'email_verified', 'name', 'groups', 'preferred_username',
+    'given_name', 'family_name', 'email'
+  ];
+
   currentUser = {
     email: '',
     email_verified: false,
@@ -31,8 +38,10 @@ export class UserComponent {
     preferred_username: '',
     groups: [] as string[],
     realmRoles: [] as string[],
-    clientRoles: {} as { [clientName: string]: string[] }
+    clientRoles: {} as { [clientName: string]: string[] },
   };
+
+  attributes: { key: string, value: string | string[] }[] = [];
 
   constructor(private toastr: ToastrService) {
     effect(() => {
@@ -69,6 +78,17 @@ export class UserComponent {
             }
           }
         }
+
+        this.attributes = [];
+        for (const [key, value] of Object.entries(keycloakObject)) {
+          if (!this.standardKeys.includes(key)) {
+            this.attributes.push({ key, value });
+          }
+        }
+
+        console.log(this.attributes);
+
+        this.authenticated = true;
       }
 
       if (keycloakEvent.type === KeycloakEventType.AuthLogout) {
@@ -98,5 +118,9 @@ export class UserComponent {
 
   getObjectKeys(obj: object | undefined): string[] {
     return obj ? Object.keys(obj) : [];
+  }
+
+  isArray(value: unknown): value is Array<unknown> {
+    return Array.isArray(value);
   }
 }

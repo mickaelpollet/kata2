@@ -35,15 +35,6 @@
 
     <table class="user-table">
         <tr>
-            <td class="table-column-title"><strong>Expiration Time:</strong></td>
-            <td class="table-column-content">{{ this.keycloakServer.exp | timestampToDate }} <small>({{ this.keycloakServer.exp }})</small></td>
-            <td class="table-column-button">
-                <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(keycloakServer.exp)">
-                <i class="bi bi-clipboard"></i>
-                </button>
-            </td>
-        </tr>
-        <tr>
             <td class="table-column-title"><strong>Forged Time:</strong></td>
             <td class="table-column-content">{{ this.keycloakServer.iat | timestampToDate }} <small>({{ this.keycloakServer.iat }})</small></td>
             <td class="table-column-button">
@@ -53,14 +44,22 @@
             </td>
         </tr>
         <tr>
-            <!-- <td class="table-column-title" [colSpan]="3"> -->
+            <td class="table-column-title"><strong>Expiration Time:</strong></td>
+            <td class="table-column-content">{{ this.keycloakServer.exp | timestampToDate }} <small>({{ this.keycloakServer.exp }})</small></td>
+            <td class="table-column-button">
+                <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(keycloakServer.exp)">
+                <i class="bi bi-clipboard"></i>
+                </button>
+            </td>
+        </tr>
+        <tr>
             <td class="table-column-token" [colSpan]="3">
                 <!-- <strong>Token Expiration :</strong></td> -->
                 <div class="countdown-timer" *ngIf="remainingTime > 0">
                     <span class="badge" [ngClass]="getBadgeClass()">
-                      Token Time Remaining: {{ formatRemainingTime(remainingTime) }}
+                        Token Time Remaining: {{ formatRemainingTime(remainingTime) }}
                     </span>
-                  </div>
+                </div>
             </td>
         </tr>
     </table>

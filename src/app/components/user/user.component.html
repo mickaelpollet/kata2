@@ -156,4 +156,33 @@
         </tr>
     </table>
 
+    <hr>
+
+    <div *ngIf="attributes.length > 0">
+        <h3>Custom Attributes</h3>
+        <table class="table">
+        <thead>
+            <tr>
+            <th>Attribute</th>
+            <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let currentAttribute of attributes">
+            <td (click)="copyToClipboard(currentAttribute.key)">{{ currentAttribute.key }}</td>
+            <td>
+                <ng-container *ngIf="isArray(currentAttribute.value); else singleValue">
+                    <div *ngFor="let currentAttributeValue of currentAttribute.value">
+                        <div (click)="copyToClipboard(currentAttributeValue)">{{ currentAttributeValue }}</div>
+                    </div>
+                </ng-container>
+                <ng-template #singleValue>
+                    <div (click)="copyToClipboard(currentAttribute.value)">{{ currentAttribute.value }}</div>
+                </ng-template>
+            </td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+
 </div>
