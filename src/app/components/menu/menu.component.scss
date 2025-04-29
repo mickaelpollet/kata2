@@ -2,61 +2,69 @@
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
-  }
-  
-  .app-title {
+}
+
+.fixed-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.app-title {
     font-weight: bold;
     font-size: 1.2rem;
     margin-left: 8px;
-  }
-  
-  .spacer {
+}
+
+.spacer {
     flex: 1 1 auto;
-  }
-  
-  .active-link {
+}
+
+.active-link {
     font-weight: bold;
     color: #fff !important;
-  }
-  
-  .settings-icon {
+}
+
+.settings-icon {
     color: #aaa;
     transition: color 0.3s ease;
-  
-    &:hover {
-      color: #2196f3;
-    }
-  }
-  
-  .icon-green {
-    color: #4caf50;
-  }
-  
-  .icon-red {
-    color: #f44336;
-  }
 
-  .keycloak-status {
+    &:hover {
+    color: #2196f3;
+    }
+}
+
+.icon-green {
+    color: #4caf50;
+}
+
+.icon-red {
+    color: #f44336;
+}
+
+.keycloak-status {
     margin-left: 32px;
     display: flex;
     align-items: center;
     // pointer-events: none;
-  }
-  
-  .desktop-only {
+}
+
+.desktop-only {
     display: flex;
-  }
-  
-  .mobile-menu-button {
+}
+
+.mobile-menu-button {
     display: none;
-  }
-  
-  @media (max-width: 768px) {
+}
+
+@media (max-width: 768px) {
     .desktop-only {
-      display: none !important;
+    display: none !important;
     }
-  
+
     .mobile-menu-button {
-      display: inline-flex;
+    display: inline-flex;
     }
-  }
+}

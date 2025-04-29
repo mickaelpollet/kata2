@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" class="mat-elevation-z4 toolbar-container">
+<mat-toolbar color="primary" class="fixed-toolbar mat-elevation-z4">
 
     <button mat-icon-button [matMenuTriggerFor]="menu" class="mobile-menu-button">
         <mat-icon>menu</mat-icon>
@@ -12,7 +12,7 @@
         <a mat-button routerLink="/" routerLinkActive="active-link">Home</a>
 @if (authenticated) {
         <a mat-button routerLink="/private" routerLinkActive="active-link">Private</a>
-        <a mat-button routerLink="/admin" *kaHasRoles="['admin']" routerLinkActive="active-link">Admin</a>
+        <!-- <a mat-button routerLink="/admin" *kaHasRoles="['admin']" routerLinkActive="active-link">Admin</a> -->
 }
     </nav>
 
@@ -49,6 +49,6 @@
     <button mat-menu-item routerLink="/">Home</button>
 @if (authenticated) {
     <button mat-menu-item routerLink="/private">Private</button>
-    <button mat-menu-item routerLink="/admin" *kaHasRoles="['admin']">Admin</button>
+    <!-- <button mat-menu-item routerLink="/admin" *kaHasRoles="['admin']">Admin</button> -->
 }
 </mat-menu>
