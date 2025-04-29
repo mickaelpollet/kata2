@@ -1,55 +1,54 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    
-    <div class="container-fluid">
+<mat-toolbar color="primary" class="mat-elevation-z4 toolbar-container">
 
-        <a class="navbar-brand" href="#">KATA 2</a>
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="mobile-menu-button">
+        <mat-icon>menu</mat-icon>
+    </button>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <span class="app-title">KATA 2</span>
 
-        <div class="collapse navbar-collapse" id="navbarCollapse">
+    <span class="spacer desktop-only"></span>
 
-            <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
-                </li>
+    <nav class="desktop-only">
+        <a mat-button routerLink="/" routerLinkActive="active-link">Home</a>
+@if (authenticated) {
+        <a mat-button routerLink="/private" routerLinkActive="active-link">Private</a>
+        <a mat-button routerLink="/admin" *kaHasRoles="['admin']" routerLinkActive="active-link">Admin</a>
+}
+    </nav>
 
-                <!-- @if (!authenticated) {
-                    <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Private</a>    
-                    </li>
-                } @else {
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/private">Private</a>          
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" routerLink="/admin" *kaHasRoles="['admin']">Admin</a>
-                    </li>
-                } -->
-            </ul>
-            
-            <div class="d-flex">
-                
-            @if (!authenticated) {
-                <button class="btn btn-outline-success" (click)="login()">Login</button>
-            } @else {
-                <button class="btn btn-outline-danger" (click)="logout()">Logout</button>
-            }
-            </div>
-            
-            @if (keycloakStatus) {
-                <span class="badge text-bg-success">Keycloak Online</span>
-                <i class="bi bi-clipboard"></i>
-            } @else {
-                <span class="badge text-bg-danger">Keycloak Offline</span>
-                <i class="bi bi-clipboard"></i>
-            }
-            <button class="btn btn-outline-light ms-2" (click)="openProfileModal()">
-                <i class="bi bi-gear-fill"></i>
-            </button>
 
-        </div>
+    <span class="spacer"></span>
 
-    </div>
-</nav>
+@if (!authenticated) {
+    <button mat-icon-button class="icon-green" (click)="login()" matTooltip="Login" matTooltipPosition="below">
+        <mat-icon>login</mat-icon>
+    </button>
+} @else {
+    <button mat-icon-button class="icon-red" (click)="logout()" matTooltip="Logout" matTooltipPosition="below">
+        <mat-icon>logout</mat-icon>
+    </button>
+}
+
+    <button mat-icon-button class="settings-icon" (click)="openProfileModal()" matTooltip="Keycloak Profile Management" matTooltipPosition="below">
+        <mat-icon>settings</mat-icon>
+    </button>
+
+@if (!keycloakStatus) {
+    <button mat-icon-button class="keycloak-status icon-red" matTooltip="Keycloak server unavailable" matTooltipPosition="below">
+        <mat-icon>cloud_alert</mat-icon>
+    </button>
+} @else {
+    <button mat-icon-button class="keycloak-status icon-green" matTooltip="Keycloak server available" matTooltipPosition="below">
+        <mat-icon>cloud_done</mat-icon>
+    </button>
+}
+
+</mat-toolbar>
+
+<mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/">Home</button>
+@if (authenticated) {
+    <button mat-menu-item routerLink="/private">Private</button>
+    <button mat-menu-item routerLink="/admin" *kaHasRoles="['admin']">Admin</button>
+}
+</mat-menu>

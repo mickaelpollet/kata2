@@ -2,7 +2,14 @@ import { Component, effect, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+
 import { MatDialog } from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+
 
 // Specific imports
 import Keycloak from 'keycloak-js';
@@ -16,7 +23,12 @@ import { ProfileManagerComponent } from '../profile-manager/profile-manager.comp
   imports: [
     RouterModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatTooltipModule,
+    MatIconModule,
+    MatButtonModule
   ],
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
@@ -46,7 +58,6 @@ export class MenuComponent {
 
       if (keycloakEvent.type === KeycloakEventType.Ready) {
         this.authenticated = typeEventArgs<ReadyArgs>(keycloakEvent.args);
-        this.keycloakStatus = true;
       }
 
       if (keycloakEvent.type === KeycloakEventType.AuthLogout) {
