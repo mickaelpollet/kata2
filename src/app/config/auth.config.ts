@@ -17,17 +17,21 @@ const localhostCondition = createInterceptorCondition<IncludeBearerTokenConditio
 
 function getSelectedKeycloakProfile(): any {
     try {
-        const profilesCookie = document.cookie.match(/(^| )keycloak_profiles=([^;]+)/);
-        const selectedNameCookie = document.cookie.match(/(^| )selected_keycloak_profile=([^;]+)/);
+        const profilesCookie = document.cookie.match(/(^| )keycloak-profiles=([^;]+)/);
+        const selectedNameCookie = document.cookie.match(/(^| )keycloak-profile-selected=([^;]+)/);
 
         if (!profilesCookie) return null;
 
         const profiles = JSON.parse(decodeURIComponent(profilesCookie[2]));
-        const selected = selectedNameCookie
-        ? decodeURIComponent(selectedNameCookie[2])
-        : Object.keys(profiles)[0];
+        const selectedName = selectedNameCookie
+            ? decodeURIComponent(selectedNameCookie[2])
+            : profiles[0]?.name;
 
-        return profiles[selected] || null;
+        const profile = Array.isArray(profiles)
+            ? profiles.find(p => p.name === selectedName)
+            : profiles[selectedName];
+
+        return profile || null;
     } catch (e) {
         console.warn('Erreur lecture cookie profils Keycloak:', e);
         return null;

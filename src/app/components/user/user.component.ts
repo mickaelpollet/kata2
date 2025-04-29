@@ -86,8 +86,6 @@ export class UserComponent {
           }
         }
 
-        console.log(this.attributes);
-
         this.authenticated = true;
       }
 

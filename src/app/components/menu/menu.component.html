@@ -47,27 +47,8 @@
             }
             <button class="btn btn-outline-light ms-2" (click)="openProfileModal()">
                 <i class="bi bi-gear-fill"></i>
-              </button>
-              
+            </button>
 
-            <!-- <div *ngIf="showConfigForm" class="card p-3 bg-light text-dark mt-3">
-                <h5>Configurer un profil Keycloak</h5>
-              
-                <select class="form-select mb-2" [(ngModel)]="selectedProfile" (change)="loadProfile()">
-                  <option *ngFor="let profile of profileNames" [value]="profile">{{ profile }}</option>
-                </select>
-              
-                <input class="form-control mb-2" placeholder="Nom du profil" [(ngModel)]="form.name">
-                <input class="form-control mb-2" placeholder="URL" [(ngModel)]="form.url">
-                <input class="form-control mb-2" placeholder="Realm" [(ngModel)]="form.realm">
-                <input class="form-control mb-2" placeholder="Client ID" [(ngModel)]="form.clientId">
-                <input class="form-control mb-2" placeholder="Client Secret" [(ngModel)]="form.clientSecret">
-                <input class="form-control mb-2" placeholder="Scope" [(ngModel)]="form.scope">
-              
-                <button class="btn btn-primary me-2" (click)="saveProfile()">💾 Enregistrer</button>
-                <button class="btn btn-danger" (click)="deleteProfile()">🗑️ Supprimer</button>
-              </div> -->
-              
         </div>
 
     </div>
