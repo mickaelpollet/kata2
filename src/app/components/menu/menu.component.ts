@@ -2,10 +2,13 @@ import { Component, effect, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 
 // Specific imports
 import Keycloak from 'keycloak-js';
 import { HasRolesDirective, KEYCLOAK_EVENT_SIGNAL, KeycloakEventType, typeEventArgs, ReadyArgs } from 'keycloak-angular';
+import { ProfileManagerComponent } from '../profile-manager/profile-manager.component';
+
 
 @Component({
   selector: 'app-menu',
@@ -20,9 +23,11 @@ import { HasRolesDirective, KEYCLOAK_EVENT_SIGNAL, KeycloakEventType, typeEventA
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent {
+
   authenticated = false;
   keycloakStatus = false;
   showConfigForm = false;
+  private readonly dialog = inject(MatDialog);
 
   // Formulaire de profil
   form: any = {
@@ -125,5 +130,12 @@ export class MenuComponent {
   setCookie(name: string, value: string, days: number) {
     const expires = new Date(Date.now() + days * 86400e3).toUTCString();
     document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/`;
+  }
+
+  openProfileModal() {
+    this.dialog.open(ProfileManagerComponent, {
+      width: '600px',
+      disableClose: true
+    });
   }
 }

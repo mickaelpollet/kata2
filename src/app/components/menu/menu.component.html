@@ -45,9 +45,12 @@
                 <span class="badge text-bg-danger">Keycloak Offline</span>
                 <i class="bi bi-clipboard"></i>
             }
-            <button class="btn btn-outline-light ms-2" (click)="toggleConfigForm()">⚙️ Config</button>
+            <button class="btn btn-outline-light ms-2" (click)="openProfileModal()">
+                <i class="bi bi-gear-fill"></i>
+              </button>
+              
 
-            <div *ngIf="showConfigForm" class="card p-3 bg-light text-dark mt-3">
+            <!-- <div *ngIf="showConfigForm" class="card p-3 bg-light text-dark mt-3">
                 <h5>Configurer un profil Keycloak</h5>
               
                 <select class="form-select mb-2" [(ngModel)]="selectedProfile" (change)="loadProfile()">
@@ -63,7 +66,7 @@
               
                 <button class="btn btn-primary me-2" (click)="saveProfile()">💾 Enregistrer</button>
                 <button class="btn btn-danger" (click)="deleteProfile()">🗑️ Supprimer</button>
-              </div>
+              </div> -->
               
         </div>
 

@@ -1,0 +1,49 @@
+<!-- profile-manager.component.html -->
+<h2 mat-dialog-title>Gestion des profils Keycloak</h2>
+
+<mat-dialog-content [formGroup]="profileForm">
+  <mat-form-field appearance="fill" class="w-100">
+    <mat-label>Profil</mat-label>
+    <mat-select [(value)]="selectedProfile" (selectionChange)="onProfileSelect()">
+      <mat-option *ngFor="let name of profileNames" [value]="name">{{ name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-100">
+    <mat-label>Nom du profil</mat-label>
+    <input matInput formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-100">
+    <mat-label>URL</mat-label>
+    <input matInput formControlName="url">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-100">
+    <mat-label>Realm</mat-label>
+    <input matInput formControlName="realm">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-100">
+    <mat-label>Client ID</mat-label>
+    <input matInput formControlName="clientId">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-100">
+    <mat-label>Client Secret</mat-label>
+    <input matInput formControlName="clientSecret">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-100">
+    <mat-label>Scope</mat-label>
+    <input matInput formControlName="scope">
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button color="primary" (click)="copyProfile()">Copier</button>
+  <button mat-button color="warn" (click)="deleteProfile()" [disabled]="!selectedProfile">Supprimer</button>
+  <button mat-button color="primary" (click)="saveProfile()">Sauvegarder</button>
+  <button mat-flat-button color="accent" (click)="loadProfile()" [disabled]="!selectedProfile">Charger</button>
+  <button mat-button mat-dialog-close>Fermer</button>
+</mat-dialog-actions>
