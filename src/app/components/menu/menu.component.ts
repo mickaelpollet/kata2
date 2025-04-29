@@ -25,18 +25,7 @@ export class MenuComponent {
 
   authenticated = false;
   keycloakStatus = false;
-  showConfigForm = false;
   private readonly dialog = inject(MatDialog);
-
-  // Formulaire de profil
-  form: any = {
-    name: '',
-    url: '',
-    realm: '',
-    clientId: '',
-    clientSecret: '',
-    scope: ''
-  };
 
   selectedProfile = '';
   profileNames: string[] = [];

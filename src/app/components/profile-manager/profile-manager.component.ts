@@ -92,7 +92,7 @@ export class ProfileManagerComponent implements OnInit {
       this.profiles.push({ ...profile });
     }
     this.saveProfiles();
-    this.loadProfiles(); // pour mettre à jour la liste des noms
+    this.loadProfiles();
   }
 
   deleteProfile(): void {
