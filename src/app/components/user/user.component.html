@@ -87,14 +87,16 @@
         <tr>
             <td class="table-column-title"><strong>Groups :</strong></td>
             <td class="table-column-content">
-                <div class="badges-container">
-                <span 
-                    *ngFor="let currentGroup of currentUser.groups"
-                    class="badge badge-groups"
-                    (click)="copyToClipboard(currentGroup)">
-                    {{ currentGroup }}
-                </span>
+                <div *ngIf="currentUser.groups.length > 0; else noGroups" class="badges-container">
+                    <span *ngFor="let currentGroup of currentUser.groups"
+                        class="badge badge-groups"
+                        (click)="copyToClipboard(currentGroup)">
+                        {{ currentGroup }}
+                    </span>
                 </div>
+                <ng-template #noGroups>
+                    <span class="text-muted">No groups assigned</span>
+                </ng-template>
             </td>
             <td class="table-column-button">
                 <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(currentUser.groups)">
@@ -106,8 +108,7 @@
             <td class="table-column-title"><strong>Realm Roles:</strong></td>
             <td class="table-column-content">
                 <div *ngIf="currentUser.realmRoles.length > 0; else noRoles" class="badges-container">
-                    <span 
-                        *ngFor="let currentRole of currentUser.realmRoles"
+                    <span *ngFor="let currentRole of currentUser.realmRoles"
                         class="badge badge-realm-role"
                         (click)="copyToClipboard(currentRole)">
                         {{ currentRole }}
