@@ -1,12 +1,10 @@
 export const environment = {
     KeycloakConfig: {
-        url: 'https://tools.poudlard.net:8450/auth/',
-        // realm: 'wizards-world',
-        // clientId: 'wizards-world-app',
-        realm: 'poudlard',
-        clientId: 'testapp',
+        url: 'http://localhost/',
+        realm: 'test-realm',
+        clientId: 'kata',
         clientSecret: '',
-        scope: 'openid profile email test-app',
+        scope: 'openid profile email',
         sessionTimeout: 60000
     },
     appName: 'Keycloak Angular Testing Application',

@@ -1,8 +1,8 @@
 export const environment = {
     KeycloakConfig: {
-        url: 'https://tools.poudlard.net:8450/auth/',
-        realm: 'wizards-world',
-        clientId: 'wizards-world-app',
+        url: 'http://localhost/',
+        realm: 'test-realm',
+        clientId: 'kata',
         clientSecret: '',
         scope: 'openid profile email',
         sessionTimeout: 60000
