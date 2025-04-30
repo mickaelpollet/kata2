@@ -87,14 +87,17 @@
         <tr>
             <td class="table-column-title"><strong>Groups</strong></td>
             <td class="table-column-content">
-                <div class="badges-container">
-                <span 
-                    *ngFor="let currentGroup of currentUser.groups"
-                    class="badge badge-groups"
-                    (click)="copyToClipboard(currentGroup)">
-                    {{ currentGroup }}
-                </span>
+                <div *ngIf="currentUser.groups.length > 0; else noGroups" class="badges-container">
+                    <span 
+                        *ngFor="let currentGroup of currentUser.groups"
+                        class="badge badge-groups"
+                        (click)="copyToClipboard(currentGroup)">
+                        {{ currentGroup }}
+                    </span>
                 </div>
+                <ng-template #noGroups>
+                    <span class="text-muted no-value-assigned">No groups assigned</span>
+                </ng-template>
             </td>
             <td class="table-column-button">
                 <button mat-icon-button class="icon-green" matTooltip="Copy" matTooltipPosition="left" (click)="copyToClipboard(currentUser.groups)">
@@ -102,6 +105,13 @@
                 </button>
             </td>
         </tr>
+
+    </table>
+
+    <hr>
+
+    <table class="user-table">
+
         <tr>
             <td class="table-column-title"><strong>Realm Roles</strong></td>
             <td class="table-column-content">
@@ -114,7 +124,7 @@
                     </span>
                 </div>
                 <ng-template #noRoles>
-                    <span class="text-muted">No roles assigned</span>
+                    <span class="text-muted no-value-assigned">No roles assigned</span>
                 </ng-template>
             </td>
             <td class="table-column-button">
@@ -123,29 +133,57 @@
                 </button>
             </td>
         </tr>
+
+    </table>
+
+    <hr>
+
+    <table class="user-table">
+
         <tr>
             <td class="table-column-title"><strong>Client Roles</strong></td>
             <td class="table-column-content">
                 <div *ngIf="currentUser.clientRoles && (getObjectKeys(currentUser.clientRoles).length > 0); else noClientRoles">
-                    <div *ngFor="let clientName of getObjectKeys(currentUser.clientRoles)">
-                        <div class="badges-container">
-                            <span class="badge badge-client-name"
-                            (click)="copyToClipboard(clientName)">
-                                {{ clientName }}
-                            </span>
-                        </div>
-                    
-                        <div class="badges-container">
-                            <span *ngFor="let clientRole of currentUser.clientRoles[clientName]"
-                                class="badge badge-client-role"
-                                (click)="copyToClipboard(clientRole)">
-                                {{ clientRole }}
-                            </span>
-                        </div>
-                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Client</th>
+                                <th>Client Roles</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let clientName of getObjectKeys(currentUser.clientRoles)">
+                            <td class="table-multi-value-father">
+                                <div class="badges-container">
+                                    <span class="badge badge-client-name"
+                                    (click)="copyToClipboard(clientName)">
+                                        {{ clientName }}
+                                    </span>
+                                </div>
+                            </td>
+                            <td class="table-multi-value-son">
+                                <ng-container *ngIf="isArray(currentUser.clientRoles[clientName]); else singleValue">
+                                    <div *ngFor="let clientRole of currentUser.clientRoles[clientName]" class="badges-container">
+                                        <span class="badge badge-client-role"
+                                            (click)="copyToClipboard(clientRole)">
+                                            {{ clientRole }}
+                                        </span>
+                                    </div>
+                                </ng-container>
+                                <ng-template #singleValue>
+                                    <div class="badges-container">                                        
+                                        <span class="badge badge-client-role" (click)="copyToClipboard(currentUser.clientRoles[clientName])">
+                                            {{ currentUser.clientRoles[clientName] }}
+                                        </span>
+                                    </div>
+                                </ng-template>
+                            </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <ng-template #noClientRoles>
-                    <span class="text-muted">No client roles assigned</span>
+                    <span class="text-muted no-value-assigned">No client roles assigned</span>
                 </ng-template>
             </td>
             <td class="table-column-button">
@@ -154,35 +192,81 @@
                 </button> -->
             </td>
         </tr>
+
     </table>
 
     <hr>
 
-    <div *ngIf="attributes.length > 0">
-        <h3>Custom Attributes</h3>
-        <table class="table">
-        <thead>
-            <tr>
-            <th>Attribute</th>
-            <th>Value</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let currentAttribute of attributes">
-            <td (click)="copyToClipboard(currentAttribute.key)">{{ currentAttribute.key }}</td>
-            <td>
-                <ng-container *ngIf="isArray(currentAttribute.value); else singleValue">
-                    <div *ngFor="let currentAttributeValue of currentAttribute.value">
-                        <div (click)="copyToClipboard(currentAttributeValue)">{{ currentAttributeValue }}</div>
-                    </div>
-                </ng-container>
-                <ng-template #singleValue>
-                    <div (click)="copyToClipboard(currentAttribute.value)">{{ currentAttribute.value }}</div>
+    <table class="user-table">
+
+        <tr>
+            <td class="table-column-title"><strong>Custom Attributes</strong></td>
+            <td class="table-column-content">
+                <div *ngIf="attributes && (attributes.length > 0); else noAttributes">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Attribute</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let currentAttribute of attributes">
+                            <td class="table-multi-value-father">
+                                <div class="badges-container">
+                                    <span class="badge badge-attribute-name"
+                                    (click)="copyToClipboard(currentAttribute.key)">
+                                        {{ currentAttribute.key }}
+                                    </span>
+                                </div>
+                            </td>
+                            <td class="table-multi-value-son">
+                                <ng-container *ngIf="isArray(currentAttribute.value); else singleValue">
+                                    <div *ngFor="let currentAttributeValue of currentAttribute.value" class="badges-container">
+                                        <span class="badge badge-attribute-value"
+                                            (click)="copyToClipboard(currentAttributeValue)">
+                                            {{ currentAttributeValue }}
+                                        </span>
+                                    </div>
+                                </ng-container>
+                                <ng-template #singleValue>
+                                    <div class="badges-container">                                        
+                                        <span class="badge badge-attribute-value" (click)="copyToClipboard(currentAttribute.value)">
+                                            {{ currentAttribute.value }}
+                                        </span>
+                                    </div>
+                                </ng-template>
+                            </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <ng-template #noAttributes>
+                    <span class="text-muted no-value-assigned">No attributes assigned</span>
                 </ng-template>
             </td>
-            </tr>
-        </tbody>
-        </table>
-    </div>
+            <td class="table-column-button">
+                <!-- <button mat-icon-button class="icon-green" matTooltip="Copy" matTooltipPosition="left" (click)="copyToClipboard(currentUser.clientRoles)">
+                    <mat-icon>content_copy</mat-icon>
+                </button> -->
+            </td>
+        </tr>
+
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </div>
