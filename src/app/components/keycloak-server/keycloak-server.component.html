@@ -54,7 +54,6 @@
         </tr>
         <tr>
             <td class="table-column-token" [colSpan]="3">
-                <!-- <strong>Token Expiration :</strong></td> -->
                 <div class="countdown-timer" *ngIf="remainingTime > 0">
                     <span class="badge" [ngClass]="getBadgeClass()">
                         Token Time Remaining: {{ formatRemainingTime(remainingTime) }}
@@ -68,19 +67,10 @@
 
     <table class="user-table">
         <tr>
-            <td class="table-column-title"><strong>sid</strong></td>
+            <td class="table-column-title"><strong>Session ID</strong></td>
             <td class="table-column-content">{{ keycloakServer.sid }}</td>
             <td class="table-column-button">
                 <button mat-icon-button class="icon-green" matTooltip="Copy" matTooltipPosition="left" (click)="copyToClipboard(keycloakServer.sid)">
-                    <mat-icon>content_copy</mat-icon>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td class="table-column-title"><strong>Access Context Class Reference (acr)</strong></td>
-            <td class="table-column-content">{{ keycloakServer.acr }}</td>
-            <td class="table-column-button">
-                <button mat-icon-button class="icon-green" matTooltip="Copy" matTooltipPosition="left" (click)="copyToClipboard(keycloakServer.acr)">
                     <mat-icon>content_copy</mat-icon>
                 </button>
             </td>
@@ -99,6 +89,20 @@
             </td>
             <td class="table-column-button">
                 <button mat-icon-button class="icon-green" matTooltip="Copy" matTooltipPosition="left" (click)="copyToClipboard(keycloakServer.allowedOrigins)">
+                    <mat-icon>content_copy</mat-icon>
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td class="table-column-title"><strong>Access Context Class Reference (acr)</strong></td>
+            <td class="table-column-content acr-value">
+                <span class="badge badge-acr-value"
+                    (click)="copyToClipboard(keycloakServer.acr)">
+                    {{ keycloakServer.acr }}
+                </span>
+            </td>
+            <td class="table-column-button">
+                <button mat-icon-button class="icon-green" matTooltip="Copy" matTooltipPosition="left" (click)="copyToClipboard(keycloakServer.acr)">
                     <mat-icon>content_copy</mat-icon>
                 </button>
             </td>

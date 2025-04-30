@@ -3,7 +3,7 @@
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 1.5rem;
-    max-width: 800px;
+    // max-width: 800px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -19,7 +19,7 @@
 .user-table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 2rem;
+    // margin-bottom: 2rem;
 }
 
 .user-table td {
@@ -52,6 +52,11 @@
     border-radius: 6px;
 }
 
+.acr-value {
+    font-size: 1.3rem;
+    text-align: center;
+}
+
 .badge.text-bg-success {
     background-color: #28a745;
     color: white;
@@ -76,6 +81,11 @@
     white-space: nowrap;
     font-size: 0.9rem;
     padding: 0.4em 0.8em;
+}
+
+.badge-acr-value {
+    background-color: #dc8b35;
+    color: white;
 }
 
 .badge-realm-role {
