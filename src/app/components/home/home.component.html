@@ -1,4 +1,4 @@
-<h1>Welcome on KATA 2 : Keycloak Angular Testing App</h1>
+<!-- <h1>Welcome on KATA 2 : Keycloak Angular Testing App</h1>
 
 @if (!authenticated) {
   <h2>You are not authenticated</h2>
@@ -20,4 +20,23 @@
     </div>
 
   </div>
-}
+} -->
+
+
+<div class="app-container">
+  <h1 class="app-title">KATA 2: Keycloak Angular Testing App</h1>
+
+  <div *ngIf="!authenticated" class="not-authenticated">
+    <h2 class="status-message">You are not authenticated</h2>
+  </div>
+
+  <div *ngIf="authenticated" class="authenticated">
+    <h2 class="status-message">You are authenticated</h2>
+
+    <div class="grid-wrapper">
+      <app-user class="grid-card"></app-user>
+      <app-keycloak-server class="grid-card"></app-keycloak-server>
+      <app-tokens class="grid-card"></app-tokens>
+    </div>
+  </div>
+</div>

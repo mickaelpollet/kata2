@@ -4,7 +4,7 @@
 
     <table class="user-table">
         <tr>
-            <td class="table-column-title"><strong>UUID:</strong></td>
+            <td class="table-column-title"><strong>UUID</strong></td>
             <td class="table-column-content">{{ currentUser.sub }}</td>
             <td class="table-column-button">
             <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(currentUser.sub)">
@@ -13,7 +13,7 @@
             </td>
         </tr>
         <tr>
-            <td class="table-column-title"><strong>Username:</strong></td>
+            <td class="table-column-title"><strong>Username</strong></td>
             <td class="table-column-content">{{ currentUser.preferred_username }}</td>
             <td class="table-column-button">
             <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(currentUser.preferred_username)">
@@ -27,7 +27,7 @@
 
     <table class="user-table">
         <tr>
-            <td class="table-column-title"><strong>Full Name:</strong></td>
+            <td class="table-column-title"><strong>Full Name</strong></td>
             <td class="table-column-content">{{ currentUser.name }}</td>
             <td class="table-column-button">
             <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(currentUser.name)">
@@ -36,7 +36,7 @@
             </td>
         </tr>
         <tr>
-            <td class="table-column-title"><strong>Given Name:</strong></td>
+            <td class="table-column-title"><strong>Given Name</strong></td>
             <td class="table-column-content">{{ currentUser.given_name }}</td>
             <td class="table-column-button">
             <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(currentUser.given_name)">
@@ -45,7 +45,7 @@
             </td>
         </tr>
         <tr>
-            <td class="table-column-title"><strong>Family Name:</strong></td>
+            <td class="table-column-title"><strong>Family Name</strong></td>
             <td class="table-column-content">{{ currentUser.family_name }}</td>
             <td class="table-column-button">
             <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(currentUser.family_name)">
@@ -59,7 +59,7 @@
     
     <table class="user-table">
         <tr>
-            <td class="table-column-title"><strong>eMail:</strong></td>
+            <td class="table-column-title"><strong>eMail</strong></td>
             <td class="table-column-content">{{ currentUser.email }}</td>
             <td class="table-column-button">
             <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(currentUser.email)">
@@ -68,7 +68,7 @@
             </td>
         </tr>
         <tr>
-            <td class="table-column-title"><strong>eMail Verified:</strong></td>
+            <td class="table-column-title"><strong>eMail Verified</strong></td>
             <td class="table-column-content">
             @if (currentUser.email_verified) {
                 <span class="badge rounded-pill text-bg-success">Yes</span>
@@ -85,18 +85,16 @@
 
     <table class="user-table">
         <tr>
-            <td class="table-column-title"><strong>Groups :</strong></td>
+            <td class="table-column-title"><strong>Groups</strong></td>
             <td class="table-column-content">
-                <div *ngIf="currentUser.groups.length > 0; else noGroups" class="badges-container">
-                    <span *ngFor="let currentGroup of currentUser.groups"
-                        class="badge badge-groups"
-                        (click)="copyToClipboard(currentGroup)">
-                        {{ currentGroup }}
-                    </span>
+                <div class="badges-container">
+                <span 
+                    *ngFor="let currentGroup of currentUser.groups"
+                    class="badge badge-groups"
+                    (click)="copyToClipboard(currentGroup)">
+                    {{ currentGroup }}
+                </span>
                 </div>
-                <ng-template #noGroups>
-                    <span class="text-muted">No groups assigned</span>
-                </ng-template>
             </td>
             <td class="table-column-button">
                 <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(currentUser.groups)">
@@ -105,10 +103,11 @@
             </td>
         </tr>
         <tr>
-            <td class="table-column-title"><strong>Realm Roles:</strong></td>
+            <td class="table-column-title"><strong>Realm Roles</strong></td>
             <td class="table-column-content">
                 <div *ngIf="currentUser.realmRoles.length > 0; else noRoles" class="badges-container">
-                    <span *ngFor="let currentRole of currentUser.realmRoles"
+                    <span 
+                        *ngFor="let currentRole of currentUser.realmRoles"
                         class="badge badge-realm-role"
                         (click)="copyToClipboard(currentRole)">
                         {{ currentRole }}
@@ -125,7 +124,7 @@
             </td>
         </tr>
         <tr>
-            <td class="table-column-title"><strong>Client Roles:</strong></td>
+            <td class="table-column-title"><strong>Client Roles</strong></td>
             <td class="table-column-content">
                 <div *ngIf="currentUser.clientRoles && (getObjectKeys(currentUser.clientRoles).length > 0); else noClientRoles">
                     <div *ngFor="let clientName of getObjectKeys(currentUser.clientRoles)">
