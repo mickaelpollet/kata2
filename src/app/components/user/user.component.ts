@@ -5,12 +5,18 @@ import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import Keycloak from 'keycloak-js';
 import { KEYCLOAK_EVENT_SIGNAL, KeycloakEventType, typeEventArgs, ReadyArgs } from 'keycloak-angular';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-user',
   standalone: true,
   imports: [
-    CommonModule
+    CommonModule,
+    MatTooltipModule,
+    MatButtonModule,
+    MatIconModule
   ],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss'

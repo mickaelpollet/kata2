@@ -6,13 +6,19 @@ import { ToastrService } from 'ngx-toastr';
 import { TimestampToDatePipe } from '../../pipes/timestamp-to-date.pipe';
 import Keycloak from 'keycloak-js';
 import { KEYCLOAK_EVENT_SIGNAL, KeycloakEventType, typeEventArgs, ReadyArgs } from 'keycloak-angular';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-keycloak-server',
   standalone: true,
   imports: [
     CommonModule,
-    TimestampToDatePipe
+    TimestampToDatePipe,
+    MatTooltipModule,
+    MatButtonModule,
+    MatIconModule
   ],
   templateUrl: './keycloak-server.component.html',
   styleUrl: './keycloak-server.component.scss'

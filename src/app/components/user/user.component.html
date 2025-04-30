@@ -7,18 +7,18 @@
             <td class="table-column-title"><strong>UUID</strong></td>
             <td class="table-column-content">{{ currentUser.sub }}</td>
             <td class="table-column-button">
-            <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(currentUser.sub)">
-                <i class="bi bi-clipboard"></i>
-            </button>
+                <button mat-icon-button class="icon-green" matTooltip="Copy" matTooltipPosition="left" (click)="copyToClipboard(currentUser.sub)">
+                    <mat-icon>content_copy</mat-icon>
+                </button>
             </td>
         </tr>
         <tr>
             <td class="table-column-title"><strong>Username</strong></td>
             <td class="table-column-content">{{ currentUser.preferred_username }}</td>
             <td class="table-column-button">
-            <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(currentUser.preferred_username)">
-                <i class="bi bi-clipboard"></i>
-            </button>
+                <button mat-icon-button class="icon-green" matTooltip="Copy" matTooltipPosition="left" (click)="copyToClipboard(currentUser.preferred_username)">
+                    <mat-icon>content_copy</mat-icon>
+                </button>
             </td>
         </tr>
     </table>
@@ -30,27 +30,27 @@
             <td class="table-column-title"><strong>Full Name</strong></td>
             <td class="table-column-content">{{ currentUser.name }}</td>
             <td class="table-column-button">
-            <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(currentUser.name)">
-                <i class="bi bi-clipboard"></i>
-            </button>
+                <button mat-icon-button class="icon-green" matTooltip="Copy" matTooltipPosition="left" (click)="copyToClipboard(currentUser.name)">
+                    <mat-icon>content_copy</mat-icon>
+                </button>
             </td>
         </tr>
         <tr>
             <td class="table-column-title"><strong>Given Name</strong></td>
             <td class="table-column-content">{{ currentUser.given_name }}</td>
             <td class="table-column-button">
-            <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(currentUser.given_name)">
-                <i class="bi bi-clipboard"></i>
-            </button>
+                <button mat-icon-button class="icon-green" matTooltip="Copy" matTooltipPosition="left" (click)="copyToClipboard(currentUser.given_name)">
+                    <mat-icon>content_copy</mat-icon>
+                </button>
             </td>
         </tr>
         <tr>
             <td class="table-column-title"><strong>Family Name</strong></td>
             <td class="table-column-content">{{ currentUser.family_name }}</td>
             <td class="table-column-button">
-            <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(currentUser.family_name)">
-                <i class="bi bi-clipboard"></i>
-            </button>
+                <button mat-icon-button class="icon-green" matTooltip="Copy" matTooltipPosition="left" (click)="copyToClipboard(currentUser.family_name)">
+                    <mat-icon>content_copy</mat-icon>
+                </button>
             </td>
         </tr>
     </table>
@@ -62,9 +62,9 @@
             <td class="table-column-title"><strong>eMail</strong></td>
             <td class="table-column-content">{{ currentUser.email }}</td>
             <td class="table-column-button">
-            <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(currentUser.email)">
-                <i class="bi bi-clipboard"></i>
-            </button>
+                <button mat-icon-button class="icon-green" matTooltip="Copy" matTooltipPosition="left" (click)="copyToClipboard(currentUser.email)">
+                    <mat-icon>content_copy</mat-icon>
+                </button>
             </td>
         </tr>
         <tr>
@@ -97,8 +97,8 @@
                 </div>
             </td>
             <td class="table-column-button">
-                <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(currentUser.groups)">
-                <i class="bi bi-clipboard"></i>
+                <button mat-icon-button class="icon-green" matTooltip="Copy" matTooltipPosition="left" (click)="copyToClipboard(currentUser.groups)">
+                    <mat-icon>content_copy</mat-icon>
                 </button>
             </td>
         </tr>
@@ -118,8 +118,8 @@
                 </ng-template>
             </td>
             <td class="table-column-button">
-                <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(currentUser.realmRoles)">
-                    <i class="bi bi-clipboard"></i>
+                <button mat-icon-button class="icon-green" matTooltip="Copy" matTooltipPosition="left" (click)="copyToClipboard(currentUser.realmRoles)">
+                    <mat-icon>content_copy</mat-icon>
                 </button>
             </td>
         </tr>
@@ -149,8 +149,8 @@
                 </ng-template>
             </td>
             <td class="table-column-button">
-                <!-- <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(currentUser.clientRoles)">
-                    <i class="bi bi-clipboard"></i>
+                <!-- <button mat-icon-button class="icon-green" matTooltip="Copy" matTooltipPosition="left" (click)="copyToClipboard(currentUser.clientRoles)">
+                    <mat-icon>content_copy</mat-icon>
                 </button> -->
             </td>
         </tr>

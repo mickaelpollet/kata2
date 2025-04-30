@@ -4,19 +4,19 @@
     <table class="user-table">
         <tr>
             <td class="table-column-title"><strong>Issuer</strong></td>
-            <td class="table-column-content">{{ this.keycloakServer.iss }}</td>
+            <td class="table-column-content">{{ keycloakServer.iss }}</td>
             <td class="table-column-button">
-                <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(keycloakServer.iss)">
-                <i class="bi bi-clipboard"></i>
+                <button mat-icon-button class="icon-green" matTooltip="Copy" matTooltipPosition="left" (click)="copyToClipboard(keycloakServer.iss)">
+                    <mat-icon>content_copy</mat-icon>
                 </button>
             </td>
         </tr>
         <tr>
             <td class="table-column-title"><strong>Client</strong></td>
-            <td class="table-column-content">{{ this.keycloakServer.azp }}</td>
+            <td class="table-column-content">{{ keycloakServer.azp }}</td>
             <td class="table-column-button">
-                <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(keycloakServer.azp)">
-                <i class="bi bi-clipboard"></i>
+                <button mat-icon-button class="icon-green" matTooltip="Copy" matTooltipPosition="left" (click)="copyToClipboard(keycloakServer.azp)">
+                    <mat-icon>content_copy</mat-icon>
                 </button>
             </td>
         </tr>
@@ -24,9 +24,9 @@
             <td class="table-column-title"><strong>Scope</strong></td>
             <td class="table-column-content">{{ keycloakServer.scope }}</td>
             <td class="table-column-button">
-            <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(keycloakServer.scope)">
-                <i class="bi bi-clipboard"></i>
-            </button>
+                <button mat-icon-button class="icon-green" matTooltip="Copy" matTooltipPosition="left" (click)="copyToClipboard(keycloakServer.scope)">
+                    <mat-icon>content_copy</mat-icon>
+                </button>
             </td>
         </tr>
     </table>
@@ -36,19 +36,19 @@
     <table class="user-table">
         <tr>
             <td class="table-column-title"><strong>Forged Time</strong></td>
-            <td class="table-column-content">{{ this.keycloakServer.iat | timestampToDate }} <small>({{ this.keycloakServer.iat }})</small></td>
+            <td class="table-column-content">{{ keycloakServer.iat | timestampToDate }} <small>({{ keycloakServer.iat }})</small></td>
             <td class="table-column-button">
-                <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(keycloakServer.iat)">
-                <i class="bi bi-clipboard"></i>
+                <button mat-icon-button class="icon-green" matTooltip="Copy" matTooltipPosition="left" (click)="copyToClipboard(keycloakServer.iat)">
+                    <mat-icon>content_copy</mat-icon>
                 </button>
             </td>
         </tr>
         <tr>
             <td class="table-column-title"><strong>Expiration Time</strong></td>
-            <td class="table-column-content">{{ this.keycloakServer.exp | timestampToDate }} <small>({{ this.keycloakServer.exp }})</small></td>
+            <td class="table-column-content">{{ keycloakServer.exp | timestampToDate }} <small>({{ keycloakServer.exp }})</small></td>
             <td class="table-column-button">
-                <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(keycloakServer.exp)">
-                <i class="bi bi-clipboard"></i>
+                <button mat-icon-button class="icon-green" matTooltip="Copy" matTooltipPosition="left" (click)="copyToClipboard(keycloakServer.exp)">
+                    <mat-icon>content_copy</mat-icon>
                 </button>
             </td>
         </tr>
@@ -69,19 +69,19 @@
     <table class="user-table">
         <tr>
             <td class="table-column-title"><strong>sid</strong></td>
-            <td class="table-column-content">{{ this.keycloakServer.sid }}</td>
+            <td class="table-column-content">{{ keycloakServer.sid }}</td>
             <td class="table-column-button">
-                <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(keycloakServer.sid)">
-                <i class="bi bi-clipboard"></i>
+                <button mat-icon-button class="icon-green" matTooltip="Copy" matTooltipPosition="left" (click)="copyToClipboard(keycloakServer.sid)">
+                    <mat-icon>content_copy</mat-icon>
                 </button>
             </td>
         </tr>
         <tr>
             <td class="table-column-title"><strong>Access Context Class Reference (acr)</strong></td>
-            <td class="table-column-content">{{ this.keycloakServer.acr }}</td>
+            <td class="table-column-content">{{ keycloakServer.acr }}</td>
             <td class="table-column-button">
-                <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(keycloakServer.acr)">
-                <i class="bi bi-clipboard"></i>
+                <button mat-icon-button class="icon-green" matTooltip="Copy" matTooltipPosition="left" (click)="copyToClipboard(keycloakServer.acr)">
+                    <mat-icon>content_copy</mat-icon>
                 </button>
             </td>
         </tr>
@@ -98,8 +98,8 @@
                 </div>
             </td>
             <td class="table-column-button">
-                <button type="button" class="btn btn-secondary btn-sm" (click)="copyToClipboard(keycloakServer.allowedOrigins)">
-                <i class="bi bi-clipboard"></i>
+                <button mat-icon-button class="icon-green" matTooltip="Copy" matTooltipPosition="left" (click)="copyToClipboard(keycloakServer.allowedOrigins)">
+                    <mat-icon>content_copy</mat-icon>
                 </button>
             </td>
         </tr>
