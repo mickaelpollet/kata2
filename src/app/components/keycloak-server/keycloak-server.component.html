@@ -35,38 +35,6 @@
 
     <table class="user-table">
         <tr>
-            <td class="table-column-title"><strong>Forged Time</strong></td>
-            <td class="table-column-content">{{ keycloakServer.iat | timestampToDate }} <small>({{ keycloakServer.iat }})</small></td>
-            <td class="table-column-button">
-                <button mat-icon-button class="icon-green" matTooltip="Copy" matTooltipPosition="left" (click)="copyToClipboard(keycloakServer.iat)">
-                    <mat-icon>content_copy</mat-icon>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td class="table-column-title"><strong>Expiration Time</strong></td>
-            <td class="table-column-content">{{ keycloakServer.exp | timestampToDate }} <small>({{ keycloakServer.exp }})</small></td>
-            <td class="table-column-button">
-                <button mat-icon-button class="icon-green" matTooltip="Copy" matTooltipPosition="left" (click)="copyToClipboard(keycloakServer.exp)">
-                    <mat-icon>content_copy</mat-icon>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td class="table-column-token" [colSpan]="3">
-                <div class="countdown-timer" *ngIf="remainingTime > 0">
-                    <span class="badge" [ngClass]="getBadgeClass()">
-                        Token Time Remaining: {{ formatRemainingTime(remainingTime) }}
-                    </span>
-                </div>
-            </td>
-        </tr>
-    </table>
-
-    <hr>
-
-    <table class="user-table">
-        <tr>
             <td class="table-column-title"><strong>Session ID</strong></td>
             <td class="table-column-content">{{ keycloakServer.sid }}</td>
             <td class="table-column-button">
@@ -105,6 +73,40 @@
                 <button mat-icon-button class="icon-green" matTooltip="Copy" matTooltipPosition="left" (click)="copyToClipboard(keycloakServer.acr)">
                     <mat-icon>content_copy</mat-icon>
                 </button>
+            </td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h3>Access Token informations</h3>
+
+    <table class="user-table">
+        <tr>
+            <td class="table-column-title"><strong>Forged Time</strong></td>
+            <td class="table-column-content">{{ keycloakServer.iat | timestampToDate }} <small>({{ keycloakServer.iat }})</small></td>
+            <td class="table-column-button">
+                <button mat-icon-button class="icon-green" matTooltip="Copy" matTooltipPosition="left" (click)="copyToClipboard(keycloakServer.iat)">
+                    <mat-icon>content_copy</mat-icon>
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td class="table-column-title"><strong>Expiration Time</strong></td>
+            <td class="table-column-content">{{ keycloakServer.exp | timestampToDate }} <small>({{ keycloakServer.exp }})</small></td>
+            <td class="table-column-button">
+                <button mat-icon-button class="icon-green" matTooltip="Copy" matTooltipPosition="left" (click)="copyToClipboard(keycloakServer.exp)">
+                    <mat-icon>content_copy</mat-icon>
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td class="table-column-token" [colSpan]="3">
+                <div class="countdown-timer" *ngIf="remainingTime > 0">
+                    <span class="badge" [ngClass]="getBadgeClass()">
+                        Token Time Remaining: {{ formatRemainingTime(remainingTime) }}
+                    </span>
+                </div>
             </td>
         </tr>
     </table>

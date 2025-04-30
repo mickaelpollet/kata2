@@ -44,6 +44,11 @@ export class KeycloakServerComponent {
     allowedOrigins: [] as string[]
   };
 
+  keycloakServerAT = {
+    exp: 0,
+    iat: 0,
+  };
+
   constructor(private toastr: ToastrService) {
     effect(() => {
 
