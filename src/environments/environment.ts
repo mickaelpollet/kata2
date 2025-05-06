@@ -10,5 +10,6 @@ export const environment = {
     },
     appName: 'Keycloak Angular Testing Application',
     appNameAcronym: 'KATA 2',
-    appUrl: 'https://kata.poudlard.net:4443'
+    appUrl: 'http://localhost:4200',
+    projetUrl: "https://github.com/mickaelpollet/kata2"
 };
