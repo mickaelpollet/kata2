@@ -10,8 +10,9 @@
 
     <nav class="desktop-only">
         <a mat-button routerLink="/" routerLinkActive="active-link">Home</a>
+        <a mat-button routerLink="/tools" routerLinkActive="active-link">Tools</a>
 @if (authenticated) {
-        <a mat-button routerLink="/private" routerLinkActive="active-link">Private</a>
+        <!-- <a mat-button routerLink="/private" routerLinkActive="active-link">Private</a> -->
         <!-- <a mat-button routerLink="/admin" *kaHasRoles="['admin']" routerLinkActive="active-link">Admin</a> -->
 }
     </nav>

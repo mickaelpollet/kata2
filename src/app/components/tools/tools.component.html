@@ -1,0 +1,61 @@
+<h1 class="title">Tools</h1>
+
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+    <mat-tab label="JWT Decoding" active>
+        <div class="jwt-container">
+            <div class="left-panel">
+                <label for="jwt">JWT Token :</label>
+                <textarea
+                    id="jwt"
+                    [(ngModel)]="jwt"
+                    (input)="decodeJWT()"
+                    placeholder="Paste JWT Token here...">
+                </textarea>
+
+                <label for="secret">Validating JWT Signature (Secret Key HMAC-SHA256) :</label>
+                <input
+                    id="secret"
+                    type="text"
+                    [(ngModel)]="secret"
+                    (input)="decodeJWT()"
+                    placeholder="Optional" />
+
+                <div *ngIf="signatureValid !== null" class="signature-status">
+                Signature : 
+                <span [class.valid]="signatureValid" [class.invalid]="!signatureValid">
+                    {{ signatureValid ? 'valid ✅' : 'invalid ❌' }}
+                </span>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <label>JWT Decoded Content :</label>
+                <pre class="json" [innerHTML]="formatJson(decoded) | jsonHighlight"></pre>
+            </div>
+        </div>
+    </mat-tab>
+
+    <mat-tab label="Json Reader">
+        <div class="json-reader-container">
+            <label for="json-input">Paste your JSON here :</label>
+            <textarea
+                id="json-input"
+                [(ngModel)]="jsonInput"
+                (input)="parseJsonInput()"
+                placeholder="Paste valid JSON..."
+                rows="10"
+            ></textarea>
+
+            <div *ngIf="jsonError" class="error-message">{{ jsonError }}</div>
+
+            <div *ngIf="jsonParsed" class="json-output">
+                <label>Formated JSON :</label>
+                <pre class="json" [innerHTML]="formatJson(jsonParsed) | jsonHighlight"></pre>
+            </div>
+        </div>
+    </mat-tab>
+
+    <!-- <mat-tab label="Other tools">
+        <p>Coming soon</p>
+    </mat-tab> -->
+</mat-tab-group>
