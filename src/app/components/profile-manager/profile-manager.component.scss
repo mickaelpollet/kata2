@@ -1,0 +1,36 @@
+/* Styles for the Profile Manager Dialog. Leverages global styles and Angular Material theming. */
+
+// Ensure form fields take full width and have consistent spacing
+.w-100 {
+  width: 100%;
+}
+
+mat-dialog-content {
+  padding: var(--spacing-medium);
+
+  mat-form-field.w-100 {
+    margin-bottom: var(--spacing-small);
+  }
+}
+
+mat-dialog-actions {
+  padding: var(--spacing-medium); // Add padding to the actions area as well for consistency
+  display: flex; // Ensure flex display for gap property to work
+  justify-content: flex-end; // Align buttons to the end, common for dialogs
+  gap: var(--spacing-small); // Spacing between buttons
+
+  // If buttons are not direct children or gap is not effective,
+  // you might need to target buttons directly:
+  // button {
+  //   margin-left: var(--spacing-small);
+  // }
+  // button:first-child {
+  //  margin-left: 0;
+  // }
+}
+
+// Title styling should be inherited, but if specific overrides are needed:
+// h2[mat-dialog-title] {
+//   color: var(--primary-color); // Example if you want to use a global variable
+//   margin-bottom: var(--spacing-medium); // Spacing below the title
+// }

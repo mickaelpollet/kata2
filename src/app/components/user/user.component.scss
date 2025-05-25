@@ -1,23 +1,141 @@
-@import '../shared/user-card.shared.scss';
+// Styles for user.component.scss
+// Relevant styles from the deprecated user-card.shared.scss are now included below.
 
+// H2 styling within the app-card for this component
+.app-card h2 {
+    font-size: 1.6rem;
+    margin-bottom: var(--spacing-large); // 1.5rem
+    text-align: center;
+    color: var(--text-color);
+}
 
-.json-card {
-    background: #1e1e1e;
-    color: #f8f8f2;
-    padding: 1.5rem;
-    border-radius: 10px;
-    margin-bottom: 2rem;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+}
 
-    h2 {
-        color: #61dafb;
-        margin-bottom: 1rem;
+.user-table td {
+    padding: var(--spacing-small) 0.2rem; // ~0.5rem vertical, 0.2rem horizontal
+    vertical-align: middle;
+    word-break: break-word;
+}
+
+.table-column-title {
+    font-weight: bold;
+    width: 25%;
+    color: #555; // Consider var(--secondary-text-color)
+    font-size: 1rem;
+}
+
+.table-column-content {
+    width: 65%;
+    font-size: 0.9rem;
+}
+
+.table-column-button {
+    width: 10%;
+    text-align: center;
+}
+
+.table-multi-value-father {
+    width: 35%; 
+}
+
+.table-multi-value-son {
+    width: 65%;
+}
+
+.no-value-assigned {
+    font-style: italic;
+    color: #e5b7bc !important; // Consider a specific variable
+}
+
+// Badge Styles
+.badges-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-small); // ~8px
+    margin-top: 0.3rem; // ~5px
+}
+
+.badge {
+    color: white; 
+    border-radius: 12px; // ~0.75rem
+    white-space: nowrap;
+    font-size: 0.9rem;
+    padding: 0.4em 0.8em;
+    cursor: default; 
+}
+
+.badge.text-bg-success {
+    background-color: #28a745;
+}
+
+.badge.text-bg-danger {
+    background-color: #dc3545;
+}
+
+.badge-groups {
+    background-color: #cbb736;
+}
+
+.badge-realm-role {
+    background-color: #620faa;
+}
+
+.badge-client-name {
+    background-color: #0e3970;
+}
+
+.badge-client-role {
+    background-color: #427fce;
+}
+
+.badge-attribute-name {
+    background-color: #25700e;
+}
+
+.badge-attribute-value {
+    background-color: #56c335;
+}
+
+// Responsive Styles
+@media (max-width: 600px) {
+    .user-table td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
     }
 
-    pre {
-        white-space: pre-wrap;
-        word-break: break-word;
-        font-family: 'Courier New', monospace;
-        font-size: 0.85rem;
+    .table-column-title,
+    .table-column-content,
+    .table-column-button {
+        width: 100% !important; 
+        text-align: left !important; 
+        margin-bottom: var(--spacing-small);
     }
+
+    .table-column-button {
+        text-align: right !important; 
+    }
+
+    .badges-container {
+        justify-content: flex-start;
+    }
+}
+
+// Specific styles for user.component.scss
+.icon-green {
+    color: green; // Consider var(--success-color)
+}
+
+hr {
+    margin-top: var(--spacing-medium);
+    margin-bottom: var(--spacing-medium);
+    border: none;
+    border-top: 1px solid var(--border-color);
+}
+
+.table-column-content .table { // Ensure nested tables have full width
+    width: 100%;
 }

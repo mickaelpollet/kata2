@@ -15,7 +15,7 @@
 .app-title {
     font-weight: bold;
     font-size: 1.2rem;
-    margin-left: 8px;
+    margin-left: var(--spacing-small); // Was 8px
 }
 
 .spacer {
@@ -24,28 +24,28 @@
 
 .active-link {
     font-weight: bold;
-    color: #fff !important;
+    color: #fff !important; // Text on primary background
 }
 
 .settings-icon {
-    color: #aaa;
+    color: var(--icon-color); // Was #aaa
     transition: color 0.3s ease;
 
     &:hover {
-    color: #2196f3;
+    color: var(--icon-color-hover); // Was #2196f3
     }
 }
 
 .icon-green {
-    color: #4caf50;
+    color: var(--success-color); // Was #4caf50
 }
 
 .icon-red {
-    color: #f44336;
+    color: var(--danger-color); // Was #f44336
 }
 
 .keycloak-status {
-    margin-left: 32px;
+    margin-left: var(--spacing-xlarge); // Was 32px
     display: flex;
     align-items: center;
     // pointer-events: none;

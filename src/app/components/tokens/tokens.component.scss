@@ -1,37 +1,32 @@
-h2 {
-    font-size: 1.25rem;
-    margin-bottom: 0.75rem;
-    color: #333;
-}
-
-pre {
-    background: #272822;
-    color: #f8f8f2;
-    padding: 1rem;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    white-space: pre-wrap;
-    word-break: break-word;
-}
-
+// Styles for tokens.component.scss
+// Global h2 and pre styles were removed as all usage is within .json-card.
 
 .json-card {
-    background: #1e1e1e;
-    color: #f8f8f2;
-    padding: 1.5rem;
-    border-radius: 10px;
-    margin-bottom: 2rem;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    background: #1e1e1e; // Specific dark theme background
+    color: #f8f8f2;       // Default text color for the dark card
+    padding: var(--spacing-large); // Was 1.5rem
+    border-radius: 10px; // Specific border-radius, could be a variable if used elsewhere
+    margin-bottom: var(--spacing-xlarge); // Was 2rem
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); // Specific shadow
 
     h2 {
-        color: #61dafb;
-        margin-bottom: 1rem;
+        color: #61dafb; // Specific heading color for the dark card
+        margin-bottom: var(--spacing-medium); // Was 1rem
+        font-size: 1.25rem; // Keeping specific font size from original global h2
     }
 
     pre {
         white-space: pre-wrap;
         word-break: break-word;
-        font-family: 'Courier New', monospace;
+        font-family: 'Courier New', monospace; // Specific mono font for code
         font-size: 0.85rem;
+        background: #272822; // Specific background for preformatted text block
+        padding: var(--spacing-medium); // Was 1rem, consistent with h2 margin
+        border-radius: 8px; // Specific border-radius for pre block
     }
 }
+
+// If icon-green needs to be defined locally (assuming it's not global):
+// .icon-green {
+//   color: green; // Or var(--success-color)
+// }

@@ -1,80 +1,26 @@
-// .container-vertical {
-//     display: flex;
-//     flex-direction: column;
-//     gap: 2rem;
-//     padding: 1.5rem;
-// }
+.app-title {
+  text-align: center;
+  font-size: 2rem; /* Consider if a global heading variable is needed in future */
+  margin-bottom: var(--spacing-large); /* 1.5rem */
+  font-weight: bolder;
+}
 
-// .content-grid {
-//     display: flex;
-//     flex-wrap: wrap;
-//     gap: 1rem;
-//   }
-  
-//   .grid-item {
-//     flex: 1 1 30%;
-//     min-width: 300px; /* important pour éviter que ça soit trop écrasé */
-//     background: #f8f9fa;
-//     padding: 1rem;
-//     border-radius: 8px;
-//     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-//   }
-  
-//   /* Gestion de l'ordre sur mobile */
-//   @media (max-width: 768px) {
-//     .content-grid {
-//       flex-direction: column;
-//     }
-  
-//     .user {
-//       order: 1;
-//     }
-  
-//     .tokens {
-//       order: 2;
-//     }
-  
-//     .keycloak-server {
-//       order: 3;
-//     }
-//   }
+.status-message {
+  text-align: center;
+  margin-bottom: var(--spacing-xlarge); /* 2rem */
+}
 
-  .app-container {
-    padding-top: 1rem;
-    padding-bottom: 0.5rem;
-    font-family: 'Segoe UI', sans-serif;
-  }
-  
-  .app-title {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    font-weight: bolder;
-  }
-  
-  .status-message {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  
-  .not-authenticated h2 {
-    color: #dc3545;
-  }
-  
-  .authenticated h2 {
-    color: #28a745;
-  }
-  
-  .grid-wrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 0.5rem;
-  }
-  
-  .grid-card {
-    background: #fff;
-    border-radius: 1rem;
-    // padding: 1.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-  }
+.not-authenticated h2 {
+  color: #dc3545; /* Consider making this a variable if used elsewhere */
+}
+
+.authenticated h2 {
+  color: #28a745; /* Consider making this a variable if used elsewhere */
+}
+
+.grid-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--spacing-medium); /* 1rem, was 0.5rem, adjusted to standard spacing */
+}
   

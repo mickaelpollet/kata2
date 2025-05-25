@@ -1,8 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --text-color: #333;
+  --background-color: #f4f7f6;
+  --card-background-color: #ffffff;
+  --border-color: #dee2e6;
 
+  --spacing-small: 0.5rem;
+  --spacing-medium: 1rem;
+  --spacing-large: 1.5rem;
+  --spacing-xlarge: 2rem;
+  --spacing-xxlarge: 3rem; /* New spacing variable for 48px */
+
+  --success-color: #4CAF50; /* Green for success states, icons */
+  --danger-color: #f44336;  /* Red for error/danger states, icons */
+  --warning-color: #ffc107; /* Yellow for warnings */
+  --icon-color: #6c757d; /* Default icon color, similar to secondary-text */
+  --icon-color-hover: #007bff; /* Icon hover color, similar to primary */
+}
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+.app-card {
+  background-color: var(--card-background-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--spacing-small); /* 0.5rem */
+  padding: var(--spacing-large);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: var(--spacing-medium);
+}
+
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-medium);
+}
 
 /* JSON Colorize */
 .url {

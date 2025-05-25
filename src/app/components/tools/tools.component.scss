@@ -1,21 +1,21 @@
 .title {
     text-align: center;
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
-    font-weight: 600;
+    margin-bottom: var(--spacing-large); // Was 1.5rem
+    font-size: 1.8rem; // Keep specific font size
+    font-weight: 600;  // Keep specific font weight
 }
 
 .jwt-container {
     display: flex;
     flex-direction: row;
-    gap: 2rem;
-    padding: 1rem;
+    gap: var(--spacing-xlarge); // Was 2rem
+    padding: var(--spacing-medium); // Was 1rem
 
     .left-panel, .right-panel {
         flex: 1;
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: var(--spacing-medium); // Was 1rem
     }
 
     textarea {
@@ -23,83 +23,82 @@
         resize: vertical;
         font-family: monospace;
         font-size: 0.9rem;
-        padding: 0.5rem;
+        padding: var(--spacing-small); // Was 0.5rem
+        border: 1px solid var(--border-color); // Added border for consistency
     }
 
     input {
-        padding: 0.5rem;
+        padding: var(--spacing-small); // Was 0.5rem
         font-size: 0.9rem;
+        font-family: monospace; // Added for consistency
+        border: 1px solid var(--border-color); // Added border for consistency
     }
 
     .signature-status {
         font-weight: bold;
         .valid {
-        color: green;
+        color: var(--success-color); // Was green
         }
         .invalid {
-        color: red;
+        color: var(--danger-color); // Was red
         }
     }
 
-    .json {
-        min-height: 450px;
-        background-color: #f0f0f0;
-        padding: 1rem;
+    .json { // Applied to pre element in JWT decoding
+        min-height: 450px; // Keep specific min-height
+        background-color: var(--background-color); // Was #f0f0f0
+        padding: var(--spacing-medium); // Was 1rem
         font-family: monospace;
         font-size: 0.9rem;
         overflow: auto;
         white-space: pre-wrap;
         word-break: break-word;
-        border: 1px solid #ccc;
+        border: 1px solid var(--border-color); // Was #ccc
+        border-radius: var(--spacing-small); // Added for consistency
     }
 }
 
-.json-key {
-    color: #922;
-    font-weight: bold;
-}
-.json-string {
-    color: #070;
-}
-.json-number {
-    color: #00a;
-}
-.json-boolean {
-    color: #c60;
-}
-.json-null {
-    color: #999;
-}
+// Local JSON highlighting styles (.json-key, .json-string, etc.) are removed.
+// Global styles from src/styles.scss (.key, .string, etc.) will be used by the jsonHighlight pipe.
 
 .json-reader-container {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 1rem;
+  gap: var(--spacing-medium); // Was 1rem
+  padding: var(--spacing-medium); // Was 1rem
 
-  textarea {
+  textarea { // Specific textarea for JSON input
     font-family: monospace;
-    font-size: 1rem;
-    padding: 0.5rem;
+    font-size: 1rem; // Slightly larger for input clarity
+    padding: var(--spacing-small); // Was 0.5rem
     resize: vertical;
+    border: 1px solid var(--border-color); // Added border
   }
 
   .error-message {
-    color: red;
+    color: var(--danger-color); // Was red
     font-weight: bold;
   }
 
-  .json-output {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    padding: 1rem;
+  .json-output { // Container for the formatted JSON output in JSON Reader tab
+    background-color: var(--background-color); // Was #f9f9f9
+    border: 1px solid var(--border-color); // Was #ddd
+    padding: var(--spacing-medium); // Was 1rem
     font-family: monospace;
     font-size: 0.9rem;
     white-space: pre-wrap;
     word-break: break-word;
+    border-radius: var(--spacing-small); // Added for consistency
+    
+    pre.json { // Styling for the <pre> tag within .json-output
+        min-height: auto; // Override min-height from .jwt-container .json if it cascades
+        background-color: transparent; // Inherit from .json-output
+        padding: 0; // Padding is on .json-output
+        border: none; // Border is on .json-output
+    }
   }
 }
 
 .mat-tab-group {
-    margin-bottom: 48px;
+    margin-bottom: var(--spacing-xxlarge); // Was 48px, now 3rem
 }

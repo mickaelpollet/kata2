@@ -1,0 +1,31 @@
+/* Styles for the Error Component. Leverages global styles from styles.scss. */
+
+.app-card {
+  text-align: center; /* Center align the content of the card */
+}
+
+.error-header h1 {
+  color: var(--secondary-color); /* Use a secondary color for the error heading */
+  margin-bottom: var(--spacing-medium);
+  font-size: 2rem; /* Explicit font size for error heading */
+}
+
+.error-message {
+  margin-bottom: var(--spacing-large);
+  font-size: 1.1rem; /* Slightly larger message text */
+}
+
+a {
+  display: inline-block;
+  padding: var(--spacing-small) var(--spacing-medium);
+  background-color: var(--primary-color);
+  color: white !important; /* Ensure text is white */
+  text-decoration: none;
+  border-radius: var(--spacing-small);
+  transition: background-color 0.3s ease;
+}
+
+a:hover {
+  /* background-color: var(--primary-darker-color); /* Define this variable in :root if needed */
+  opacity: 0.9; /* Simpler hover effect for now */
+}

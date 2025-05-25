@@ -1,26 +1,132 @@
-@import '../shared/user-card.shared.scss';
+// Styles for keycloak-server.component.scss
+// Relevant styles from the deprecated user-card.shared.scss are now included below.
 
+// H2 and H3 styling within the app-card for this component
+.app-card h2,
+.app-card h3 {
+    font-size: 1.6rem; // Consider a global variable
+    margin-bottom: var(--spacing-large); // 1.5rem
+    text-align: center;
+    color: var(--text-color);
+}
+
+.app-card h3 {
+    font-size: 1.3rem; // Slightly smaller for sub-headings
+    margin-top: var(--spacing-large);
+    margin-bottom: var(--spacing-medium);
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user-table td {
+    padding: var(--spacing-small) 0.2rem;
+    vertical-align: middle;
+    word-break: break-word;
+}
+
+.table-column-title {
+    font-weight: bold;
+    width: 25%;
+    color: #555;
+    font-size: 1rem;
+}
+
+.table-column-content {
+    width: 65%;
+    font-size: 0.9rem;
+}
+
+.table-column-button {
+    width: 10%;
+    text-align: center;
+}
+
+.acr-value { // Copied from user-card.shared.scss
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+// Base badge style (copied from user-card.shared.scss as it's used in HTML)
 .badge {
+    color: white; 
+    border-radius: 12px; // ~0.75rem
+    white-space: nowrap;
+    font-size: 0.9rem; // Default from user-card
+    padding: 0.4em 0.8em; // Default from user-card
+    cursor: default; 
+}
+
+// Specific badge for ACR value (copied from user-card.shared.scss)
+.badge-acr-value {
+    background-color: #dc8b35; // Specific color from user-card.shared.scss
+    color: white;
+    // acr-value class itself handles font-size and text-align for the container
+}
+
+// Existing badge styles from keycloak-server.component.scss
+// These might override the base .badge styles above for these specific contexts
+.badge-success {
+    background-color: #28a745; // var(--success-color)
+    color: white;
+    font-size: 1rem; // Keep existing specific font size
+    padding: 0.5em 1em; // Keep existing specific padding
+    border-radius: 0.5em; // Keep existing specific border-radius
+}
+
+.badge-warning {
+    background-color: #ffc107; // var(--warning-color)
+    color: black;
     font-size: 1rem;
     padding: 0.5em 1em;
     border-radius: 0.5em;
 }
 
-.badge-success {
-    background-color: #28a745;
-    color: white;
-}
-
-.badge-warning {
-    background-color: #ffc107;
-    color: black;
-}
-
 .badge-danger {
-    background-color: #dc3545;
+    background-color: #dc3545; // var(--danger-color)
     color: white;
+    font-size: 1rem;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
 }
 
 .table-column-token {
     text-align: center;
+    padding-top: var(--spacing-medium);
+    padding-bottom: var(--spacing-medium);
+}
+
+// Responsive Styles (copied from user-card.shared.scss)
+@media (max-width: 600px) {
+    .user-table td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .table-column-title,
+    .table-column-content,
+    .table-column-button {
+        width: 100% !important; 
+        text-align: left !important; 
+        margin-bottom: var(--spacing-small);
+    }
+
+    .table-column-button {
+        text-align: right !important;
+    }
+}
+
+hr {
+    margin-top: var(--spacing-medium);
+    margin-bottom: var(--spacing-medium);
+    border: none;
+    border-top: 1px solid var(--border-color);
+}
+
+// Style for the countdown timer text, if needed beyond just badge
+.countdown-timer {
+    text-align: center; // Ensure the badge within is centered if it's block/inline-block
 }
